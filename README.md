@@ -44,9 +44,47 @@ Functional Simulation:
 
 
 ## Fig 2: Invoke the Cadence Environment
+![Screenshot (606)](https://github.com/user-attachments/assets/5e381077-b9e3-46ce-83e7-f053f90a90e6)
 
 
 ## Creating Source Code:
+
+    `timescale 1ns/1ns
+    module counter(clk,m,rst,count);
+    input clk,m,rst;
+    output reg [3:0] count;
+    always@(posedge clk or negedge rst)
+    begin
+    if (!rst)
+    count=0;
+    else if(m)
+    count=count+1;
+    else
+    count=count-1;
+    end
+    endmodule
+
+    `timescale 1ns/1ns
+    module counter_test;
+    reg clk,rst,m;
+    wire [3:0] count;
+    initial
+    begin
+    clk=0;
+    rst=0;#5;
+    rst=1;
+    end
+    initial
+    begin
+    m=1;
+    #160 m=0;
+    end
+    counter dut(clk,m,rst,count);
+    always #5 clk=~clk;
+    initial $monitor("Time=%t rst=%b clk=%b count=%b" , $time,rst,clk,count);
+    initial
+    #320 $finish;
+    endmodule
 
 	In the Terminal, type gedit <filename>.v or <filename>.vhdl depending on the HDL Language you are to use (ex: 4b_up_downCount.v).
 
@@ -76,12 +114,14 @@ Functional Simulation:
 It will invoke the nclaunch window for functional simulation we can compile,elaborate and simulate it using Multiple step
 
 ## Fig 3: Setting Multi-step simulation
+![Screenshot (607)](https://github.com/user-attachments/assets/79c94bd1-4f3e-4205-9e43-13b0916739df)
 
 Select Multiple Step and then select “Create cds.lib File” as shown in below figure
 
 Click the cds.lib file and save the file by clicking on Save option
 
 ## Fig 4: cds.lib file Creation
+![Screenshot (608)](https://github.com/user-attachments/assets/a318c022-9cab-4f27-94e0-99ef77cc35d3)
 
 	Save cds.lib file and select the correct option for cds.lib file format based on the  HDL Language and Libraries used.
 
@@ -90,6 +130,7 @@ Click the cds.lib file and save the file by clicking on Save option
 	We are simulating verilog design without using any libraries
 
 ## Fig 5: Selection of Don’t include any libraries
+![IMAGE](https://github.com/user-attachments/assets/c18a1490-b017-497a-ab2e-f6e8180032dd)
 
 	A Click “OK” in the “nclaunch: Open Design Directory” window
 
@@ -100,6 +141,7 @@ Click the cds.lib file and save the file by clicking on Save option
 	Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation
 
 ## Fig 6: Nclaunch Window
+![Screenshot (609)](https://github.com/user-attachments/assets/cc36a2e1-a1db-447e-bed2-1fc9156759b9)
 
 To perform the function simulation, the following three steps are involved Compilation, Elaboration and Simulation.
 
@@ -124,6 +166,7 @@ i.e Cadence IES command for compile: ncverilog +access+rwc -compile fa.v
 Worklib is the directory where all the compiled codes are stored while Snapshot will have output of elaboration which in turn goes for simulation 
 
 ## Fig 7: Compiled database in worklib
+![Screenshot (609)](https://github.com/user-attachments/assets/5da213f3-d29d-4b24-a340-fea7bf52770e)
 
 	After compilation it will come under worklib you can see in right side window
 
@@ -153,6 +196,7 @@ It contains statements that map logical library names to their physical director
 	After elaboration the file will come under snapshot. Select the test bench and simulate it. 
 
 ## Fig 8: Elaboration Launch Option
+![Screenshot (610)](https://github.com/user-attachments/assets/0fb8a156-8633-4f59-9eb0-277ca353763c)
 
 ### Step 3: Simulation: – Simulate with the given test vectors over a period of time to observe the output behaviour. 
 
@@ -165,10 +209,13 @@ It contains statements that map logical library names to their physical director
 	Steps for simulation – Run the simulation command with simulator options
 
 ## Fig 9: Design Browser window for simulation
+![IMAGE 1](https://github.com/user-attachments/assets/b9db4335-a6dc-458d-9d8c-747f2b72c587)
 
 ## Fig 10: Simulation Waveform Window
+![Screenshot (611)](https://github.com/user-attachments/assets/a3b621b3-d61c-4643-b329-41d089cb4551)
 
 ## Fig 11: Simulation Waveform Window
+![Screenshot (612)](https://github.com/user-attachments/assets/505ca033-329f-4b74-bfd1-d6c71a69e12f)
 
 ### Result
 
