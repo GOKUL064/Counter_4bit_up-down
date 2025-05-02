@@ -1,4 +1,4 @@
-# Counter_4bit_up-down
+## Counter_4bit_up-down
 
 ## Aim:
 
@@ -215,7 +215,8 @@ It contains statements that map logical library names to their physical director
 ![Screenshot (611)](https://github.com/user-attachments/assets/a3b621b3-d61c-4643-b329-41d089cb4551)
 
 ## Fig 11: Simulation Waveform Window
-![Screenshot (612)](https://github.com/user-attachments/assets/505ca033-329f-4b74-bfd1-d6c71a69e12f)
+![screenshot ](https://github.com/user-attachments/assets/44b16a66-9116-4d47-a268-e3346dfdc006)
+
 
 ### Result
 
